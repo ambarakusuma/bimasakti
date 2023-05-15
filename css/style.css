@@ -1,0 +1,27 @@
+/*CSS Tabel Zebra */ #zebra 
+{ 
+width:100%;
+font-size:9px;
+font: 11px Arial Helvetica, sans-serif;
+color: #000;
+border-collapse: collapse;
+border-spacing: 0; 
+} 
+
+#zebra th 
+{ 
+color: #000000;
+background-color:#FFFFFF;
+font-size:9px;
+padding:1px 0;
+} 
+
+#zebra td 
+{ 
+font-size:9px;
+text-align: center;
+padding: 1px 0;
+#background-color: #FFFF99;
+background-color: #CCCCCC;
+} 
+#zebra tr:nth-child(odd) td { background-color: #FFFFFF; } /* table */

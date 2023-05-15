@@ -1,0 +1,684 @@
+@charset "utf-8";
+/* CSS Document */
+<!--
+
+body {
+	
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 2px;
+	
+}
+a:link {
+	color: #006699;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #006699;
+}
+a:hover {
+	text-decoration: none;
+	color: #FF6600;
+}
+a:active {
+	text-decoration: none;
+	color: #006699;
+}
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+-->
+
+.welcome_ {
+padding:3px; color:#FFFFFF;
+
+}
+
+ul.topnav {
+	list-style: none;
+	padding: 0 20px;
+	margin: 0;
+	float: left;
+	/*width: 920px;*/
+	background: #222;
+	font-size: 1.2em;
+	background: url(images/topnav_bg.jpg) repeat-x;
+}
+ul.topnav li {
+	float: left;
+	margin: 0;
+	padding: 0 15px 0 0;
+	position: relative; /*--Declare X and Y axis base for sub navigation--*/
+}
+ul.topnav li a{
+	padding: 10px 5px;
+	color: #fff;
+	display: block;
+	text-decoration: none;
+	float: left;
+}
+ul.topnav li a:hover{
+	background: url(images/topnav_hover.gif) no-repeat center top;
+}
+ul.topnav li span { /*--Drop down trigger styles--*/
+	width: 17px;
+	height: 35px;
+	float: left;
+	background:url(images/subnav_btn.gif) no-repeat center top;
+}
+ul.topnav li span.subhover {background-position: center bottom; cursor: pointer;} /*--Hover effect for trigger--*/
+ul.topnav li ul.subnav {
+	list-style: none;
+	position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+	left: 0; top: 35px;
+	background: #333;
+	margin: 0; padding: 0;
+	display: none;
+	float: left;
+	width: 170px;
+	border: 1px solid #111;
+}
+ul.topnav li ul.subnav li{
+	margin: 0; padding: 0;
+	border-top: 1px solid #252525; /*--Create bevel effect--*/
+	border-bottom: 1px solid #444; /*--Create bevel effect--*/
+	clear: both;
+	width: 170px;
+}
+html ul.topnav li ul.subnav li a {
+	float: left;
+	width: 145px;
+	background: #333 url(images/dropdown_linkbg.gif) no-repeat 10px center;
+	padding-left: 20px;
+}
+html ul.topnav li ul.subnav li a:hover { /*--Hover effect for subnav links--*/
+	background: #222 url(images/dropdown_linkbg.gif) no-repeat 10px center;
+}
+
+
+/* located in demo.css and creates a little calendar icon
+ * instead of a text link for "Choose date"
+ */
+a.dp-choose-date {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 5px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(images/calendar.png) no-repeat; 
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+	float: left;
+}
+.rounded{
+	border:1px solid #CCC; background-color:#F5F5F5;
+	min-height:30px;
+	padding:3px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+.toolbarmenu{
+	border:1px solid #CCC; background-color:#F5F5F5;
+	min-height:30px;
+	padding:3px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	
+}
+.textarea{ border: 1px solid #D5D5D5;
+}
+
+.underheader{
+	margin-top:-2px;
+	border-top:1px solid #A3AAB0;
+	min-height:300px;
+	padding:3px;
+}
+
+
+/* alert */
+.question {
+	position: absolute;
+	display: inline;
+	text-align: center;
+	width: 174px;
+	height: 78px;
+	font-size: 13px;
+	line-height: 1.5em;
+	background: url('images/alert/bubble.png') left top no-repeat;
+	padding: 10px 0 0 0;
+	text-shadow: 0px 1px 0px #fff;
+	margin-left: -7em;
+	margin-top: -6em;
+	opacity: 0;
+}
+
+.yes, .cancel {
+	margin-top: .5em;
+	margin-right: .5em;
+	cursor: pointer;
+	display: inline-block;
+	width: 63px;
+	height: 21px;
+	color: #fff;
+	text-shadow: 0px 1px 0px #000;
+	background: url('images/alert/button.png') left top no-repeat;
+}
+
+.title {
+	font-size: 30px;
+	margin-bottom: 1.5em;
+	font-weight: bold;
+	font-style: italic;
+	text-shadow: 0px 2px 0px #fff;
+}
+
+.head_detail{
+border:1px solid #999999;
+}
+
+
+/*end alert*/
+
+
+
+
+#topLeft
+{
+    top:5px;
+	right:0px;
+    padding:5px;
+	background-color:#A40000;
+	color:#FFFFFF;
+	position:fixed;
+	border: solid 1px #e1e1e1;
+    vertical-align: middle;
+	text-align: center;
+}
+
+
+
+/*---------------------------------- CALENDAR CSS -------------------------------------*/
+/* CSS Document */
+.calendar {
+	font-family: Arial,Helvetica,sans-serif;    
+    height: 600px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+	}
+.calendar caption {
+	margin: 0;
+	padding: .3em 0;
+	background: #ffa51e;
+	font-size: 23px;
+	}
+.calendar th {
+	border-bottom: 1px solid #ccc;
+	font-weight: normal;
+	background: #fff;
+	}
+.calendar td {
+	border: 1px solid #E5E5E5;
+	padding: .1em .3em ;
+	width: 1em;
+	text-align: center;
+	
+	}
+.calendar a {
+	color: #000;
+	text-decoration: none;
+	}
+
+.calendar td.today {
+	background-color:#B4C5EB;
+	
+	}
+.calendar td.selected {
+	border: 1px dotted #4396D3;
+	background-color:#cff;
+	
+	}
+.calendar td.highlighted {
+	background: #fc9;
+	}
+	
+.calendar td:hover, .calendar td.today:hover, 
+.calendar td.selected:hover, .calendar td.highlighted:hover {
+	background: #cff;
+	border: 1px solid #09f;
+	}
+
+table.calendar td.pad {
+	color: #999;
+	background-color:#E9E9E9;
+	}
+table.calendar td.pad:hover {
+	background-color:#E9E9E9;
+	border: 0;
+	}
+	
+.sunday, .saturday {
+	background: red;
+	}
+.sabtu, .minggu {
+	background:#F1EE83;
+	}
+	
+#year {
+	padding: 0;
+	width: 500px;
+	list-style: none;
+	}
+#year:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	}
+#year li {
+	float: left;
+	padding: 0 .5em .5em 0;
+	height: 150px;
+	}
+#calendar_TopRight{
+float:right;
+clear:both;
+font-size:25px;
+}
+#calendar_event{
+height:100px;
+
+}
+
+#calendar_event ul {
+list-style:none;
+float:left;
+}
+
+#calendar_event li{
+border-bottom:1px solid #D5D5D5;;
+clear:both;
+
+}
+
+
+/***********************/
+.style3 {color: #FFFFFF; font-weight: bold; }
+.tabel{ border:1px solid #cccccc;}
+/************************ SHOUTBOX **********************************/
+* {
+	margin:0;
+	padding:0;
+}
+div.clear {
+	clear:both;
+}
+div#container {
+	width:290px;
+	background-color:#FFF;
+	padding:2px;
+}
+div#comments {
+	height:100px;
+	overflow-y:scroll;
+	border:1px solid #666;
+	background-color:#FFFFFF;
+	font-family:Arial, Helvetica, sans-serif;
+}
+div.comment {
+	padding:10px;
+	border-bottom:1px solid #ccc;
+}
+div.comment-unapproved {
+	padding:10px;
+	border-bottom:1px solid #ccc;
+	background-color:#e1e1e1;
+}
+div.date {
+	display:block;
+	background:url(images/date-bg.png) no-repeat;
+	width:37px;
+	height:26px;
+	color:#fff;
+	font-size:10px;
+	text-align:center;
+	line-height:1em;
+	padding-top:6px;
+	float:left;
+	margin:0 10px 0 0;
+}
+div.comment-unapproved div.date {
+	background:url(images/date-bg-1.png) no-repeat;
+}
+span.content {
+	font-size:12px;
+	line-height:1.4em;
+}
+div#submission {
+	margin-top:10px;
+}
+div#submission textarea#message {
+	float:left;
+	width:222px;
+	height:46px;
+	padding:5px 25px 5px 5px;
+	border:1px solid #666;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+div#submission input#submit-comment {
+	display:block;
+	margin-left:6px;
+	float:left;
+	width:75px;
+	height:22px;
+	background:url(images/submit.png) no-repeat;
+	font-family:Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	font-size:12px;
+	font-weight:bold;
+	color:#000000;
+	text-align:center;
+	border:0;
+}
+div#submission input#submit-comment:hover {
+	color:#FF0000;
+}
+div#loader {
+	float:left;
+	width:252px;
+	height:56px;
+	border:1px solid #666;
+	background-color:#fff;
+}
+div#loader img.load-gif {
+	display:block;
+	width:16px;
+	height:16px;
+	margin:15px auto 0 auto;
+}
+div#loader span.success {
+	display:block;
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	padding:5px 0;
+	margin-top:15px;
+}
+span.limit {
+	position:absolute;
+	left:229px;
+	width:20px;
+	margin-top:1px;
+	background-color:#333333;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#FFFFFF;
+	padding:2px;
+}
+div#too-short {
+	float:left;
+	width:252px;
+	height:56px;
+	border:1px solid #000000;
+	background-color:#FF0000;
+}
+div#too-short span.error {
+	display:block;
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	padding:5px 10px;
+	margin-top:10px;
+	color:#FFFFFF;
+}
+span.time {
+color:#666666;
+font-size:11px;
+}
+
+.label {
+	font-size: 14px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+.inputbox{	border-top:0px;border-left:0px;border-right:0px; border-bottom:1px solid; width:50%; height:30px; font-weight:bold;
+}
+
+
+/******************* POP UP *************************/
+#backgroundPopup{
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:100%;
+width:100%;
+top:0;
+left:0;
+background:#000000;
+border:1px solid #cecece;
+z-index:1;
+}
+#popupContact{
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:384px;
+width:408px;
+background:#FFFFFF;
+border:2px solid #cecece;
+z-index:2;
+padding:12px;
+font-size:13px;
+}
+#popupContact h1{
+text-align:left;
+color:#6FA5FD;
+font-size:22px;
+font-weight:700;
+border-bottom:1px dotted #D3D3D3;
+padding-bottom:2px;
+margin-bottom:20px;
+}
+#popupContactClose{
+font-size:14px;
+line-height:14px;
+right:6px;
+top:4px;
+position:absolute;
+color:#6fa5fd;
+font-weight:700;
+display:block;
+}
+#button{
+text-align:center;
+margin:100px;
+}
+
+/************************************/
+.button{ border:0px; padding:5px; font-weight:bold;
+}
+
+.spinner {
+	    position:absolute;		
+	    text-align:center;
+	    z-index:1234;
+	    overflow: auto;		
+	    width: 200px; /* width of the spinner gif */
+	    height: 202px; /*hight of the spinner gif +2px to fix IE8 issue */
+
+	}
+
+#loading { 
+ display:none; position:fixed; left:0; top:0; width:100%; height:100%; background-color:#000000;
+	width: 100%; 
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	padding-top:20%;
+	color:#000000;
+	font-size:larger;
+	
+ 		 }
+		 
+/************************************ flip tabs **************************/
+#flip-tabs{
+	width:99%;
+	margin:0px auto; position:relative;
+}
+#flip-navigation{
+	margin:0 0 10px; padding:0; 
+	list-style:none;
+}
+#flip-navigation li{ 
+	display:inline; 
+}
+#flip-navigation li a{
+	text-decoration:none; padding:10px; 
+	margin-right:0px;
+	background:#f9f9f9;
+	color:#333; outline:none;
+	font-family:Arial; font-size:12px; text-transform:uppercase;
+}
+#flip-navigation li a:hover{
+	background:#999; 
+	color:#f0f0f0;
+}
+#flip-navigation li.selected a{
+	background:#999;
+	color:#f0f0f0;
+}
+#flip-container{  
+	
+	font-family:Arial; font-size:13px;
+}
+#flip-container div{ 
+	background:#fff;
+}
+#flip-container div ul{
+	background:#f9f9f9;
+	border:1px solid #f0f0f0;
+	margin:0; padding:15px 5px;
+	list-style-position:inside;
+}
+#flip-container div ul li{
+	padding:5px 0;
+}
+#flip-container div ul.orange{ background:#f9d999; }
+#flip-container div ul.green{ background:#d9f9d9; }
+#flip-container div ul.blue{ background:#c9d9f9 }
+
+
+
+#mainNav{clear:both; display:inline-block; width:100%;}
+#mainNav li{
+height:71px;
+list-style:none;
+float:left;
+background-color:#EBEBEB;
+background-image: url(images/navBtn.gif);
+background-repeat: no-repeat;
+background-position: right top;
+
+}
+
+#mainNav li.current{
+background-color:#C36615;
+background-image: url(images/navCurrentBtn.gif);
+}
+
+
+#mainNav li.lastDone{
+background-color:#7C8437;
+background-image: url(images/navLastDoneBtn.gif);
+}
+
+#mainNav li.done{
+background-color:#7C8437;
+background-image: url(images/navDoneBtn.gif);
+}
+
+#mainNav li a, #mainNav li a:link, #mainNav li a:visited, #mainNav li a:hover, #mainNav li a:active {
+color:#ccc;
+}
+
+#mainNav li.lastDone a, #mainNav li.lastDone a:link, #mainNav li.lastDone a:visited, #mainNav li.lastDone a:hover, #mainNav li.lastDone a:active, #mainNav li.current a, #mainNav li.current a:link, #mainNav li.current a:visited, #mainNav li.current a:hover, #mainNav li.current a:active, #mainNav li.done a, #mainNav li.done a:link, #mainNav li.done a:visited, #mainNav li.done a:hover, #mainNav li.done a:active {
+color:#fff;
+}
+
+#mainNav li.done a:hover, #mainNav li.lastDone a:hover {
+color:#FFFF99;
+cursor:hand;
+}
+
+#mainNav li a em{
+width:250px;
+display:block;
+margin:25px 0 0 10px;
+font-style:normal;
+font-weight:bold;
+font-size:15px;
+}
+
+#mainNav li a span{
+width:140px;
+display:block;
+margin-left:10px;
+font-weight:normal;
+}
+
+#mainNav li.mainNavNoBg{
+background-image:none;
+}
+
+#mainNav li a{
+height:71px;
+display:block;
+}
+
+/* #mainNav.fiveStep */
+#mainNav.fiveStep li{width:20%;}
+#mainNav.fiveStep li a{width:182px;}
+
+/* #mainNav.fourStep */
+#mainNav.fourStep li{width:25%;}
+#mainNav.fourStep li.mainNavNoBg{width:25%;}
+#mainNav.fourStep li a{width:27px;}
+
+/* #mainNav.threeStep */
+#mainNav.threeStep li{width:303px;}
+#mainNav.threeStep li.mainNavNoBg{width:304px;}
+#mainNav.threeStep li a{width:303px;}
+
+/* #mainNav.twoStep */
+#mainNav.twoStep li{width:455px;}
+#mainNav.twoStep li a{width:455px;}
+
+
+
+
+/* BUTTONS */
+.buttons{margin:10px;clear:both}
+.next {float:right}
+.previous {float:left}
+
+	
+	
